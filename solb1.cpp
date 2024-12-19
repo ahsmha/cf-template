@@ -42,35 +42,24 @@ tcT> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; } // set a = ma
 // inline void dbg(T x) { cerr << x << endl; }
 
 bool cmp(pair<int, int> p1, pair<int, int> p2) {
-    return p1.f < p2.f;
-}
-int gcd(int a, int b) {
-    if (b == 0) return a;
-    return gcd(b, a % b);
-}
-void solve(int T) {
-    // cin >> T;
-    while (T--) {
-        int n, d; cin >> n >> d;
-        vpi ms(n, {0, 0});
-        rep(i,0,n) cin >> ms[i].f >> ms[i].s;
-        sort(ms.begin(), ms.end(), cmp);
-        int i = 0, j = 0, ans = 0, sum = 0;
-        while (i<=j && j<n) {
-            if (ms[j].f - ms[i].f < d) {
-                j++;
-                sum += ms[j].s;
-                ans = max(ans,sum);
-            } else {
-                i++;
-                sum -= ms[i].s;
-            }
-        }
-        ans = max(sum, ans);
-        cout << ans << endl;
-    }
+    return p1.second < p2.second;
 }
 
+void solve(int T) {
+    cin >> T;
+    while (T--) {
+        int n; cin >> n;
+        int q; cin >> q;
+        vi x(n,0);
+        vi k(q,0);
+        rep(i,0,n) cin >> x[i];
+        rep(i,0,q) {
+            cin >> k[i];
+            auto it = lower_bound(x.begin(), x.end(), k[i])
+            if (it == x.end()) cout << 0 << endl;
+        }
+    }
+}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);

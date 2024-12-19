@@ -1,0 +1,5 @@
+vscode c++ debugging setup
+
+extensions required
+- lldb
+- c/c++ runner
